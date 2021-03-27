@@ -1,0 +1,23 @@
+{
+  "name": "romainmarcazzan_5_15012021",
+  "version": "1.0.0",
+  "description": "Orinoco e-commerce website frontend",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./sass/main.scss:./public/css/style.css --style compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RomainMarcazzan/RomainMarcazzan_5_15012021.git"
+  },
+  "author": "Romain Marcazzan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RomainMarcazzan/RomainMarcazzan_5_15012021/issues"
+  },
+  "homepage": "https://github.com/RomainMarcazzan/RomainMarcazzan_5_15012021#readme",
+  "dependencies": {
+    "sass": "^1.32.8"
+  }
+}
