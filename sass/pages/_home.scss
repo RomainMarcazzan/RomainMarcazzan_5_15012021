@@ -1,0 +1,26 @@
+.furnitures {
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    box-shadow: 0.5rem 0.5rem 0.5rem lightgray;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+
+    &__image {
+      height: 20rem;
+      width: 100%;
+      object-fit: cover;
+      border-top-right-radius: 1rem;
+      border-top-left-radius: 1rem;
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem;
+    }
+  }
+}

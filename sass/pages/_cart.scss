@@ -1,0 +1,33 @@
+.container__info {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+  align-items: center;
+  list-style: none;
+  border-bottom: 1px solid lightgray;
+}
+
+.cart {
+  &__container {
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      text-align: center;
+      align-items: center;
+      margin: 1rem auto;
+      list-style: none;
+
+      & li:nth-child(3) {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        // & button {
+        //   cursor: pointer;
+        //   width: 2rem;
+        //   height: 2rem;
+        // }
+      }
+    }
+  }
+}
