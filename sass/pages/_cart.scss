@@ -1,4 +1,4 @@
-.container__info {
+.infoTable__container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   text-align: center;
@@ -21,13 +21,12 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-
-        // & button {
-        //   cursor: pointer;
-        //   width: 2rem;
-        //   height: 2rem;
-        // }
       }
     }
   }
+}
+
+.form__container {
+  display: flex;
+  flex-direction: column;
 }

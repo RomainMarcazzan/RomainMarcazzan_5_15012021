@@ -3,11 +3,7 @@ const cartElement = document.querySelector("#cart");
 const cartContainer = document.createElement("div");
 cartContainer.className = "cart__container";
 cartElement.appendChild(cartContainer);
-
 const cartItemsArray = Object.values(cartItems);
-
-console.log(cartItems);
-console.log(cartItemsArray);
 
 cartItemsArray.map((item) => {
   const cartUl = document.createElement("ul");
@@ -47,47 +43,83 @@ cartItemsArray.map((item) => {
 
   decreaseBtn.addEventListener("click", (e) => {
     if (item.quantity > 0) {
-      item.quantity--;
-      item.totalPrice = item.quantity * item.price;
+      decreaseQuantity(item);
       quantityChild.textContent = item.quantity;
       totalLi.textContent = item.totalPrice;
     }
 
     if (item.quantity < 1) {
-      removefromArray(item);
+      removeFromCart(item);
       cartUl.remove();
-      removeFromStorage(item);
     }
-    console.log(cartItems);
-    console.log(cartItemsArray);
+    calculateTotalOrder();
   });
 
   increaseBtn.addEventListener("click", (e) => {
-    if (item.quantity > 0) {
-      item.quantity++;
-      item.totalPrice = item.quantity * item.price;
-      quantityChild.textContent = item.quantity;
-      totalLi.textContent = item.totalPrice;
-    }
-    console.log(cartItems);
-    console.log(cartItemsArray);
+    increaseQuantity(item);
+    quantityChild.textContent = item.quantity;
+    totalLi.textContent = item.totalPrice;
+    calculateTotalOrder();
   });
 
   removeBtn.addEventListener("click", (e) => {
-    removefromArray(item);
+    removeFromCart(item);
     cartUl.remove();
-    removeFromStorage(item);
+    calculateTotalOrder();
   });
 });
 
-function removefromArray(item) {
-  cartItemsArray.splice(cartItemsArray.indexOf(item.id), 1);
-  console.log(cartItems);
-  console.log(cartItemsArray);
+const totalDiv = document.createElement("div");
+totalDiv.className = "cart__container__list";
+
+const totalLabel = document.createElement("p");
+totalLabel.className = "total__container__list__totalLabel";
+totalLabel.textContent = "Total";
+const totalOrder = document.createElement("p");
+totalOrder.className = "total__container__list__total";
+totalOrder.id = "totalId";
+
+totalDiv.append(totalLabel, totalOrder);
+cartContainer.appendChild(totalDiv);
+
+calculateTotalOrder();
+
+function decreaseQuantity(item) {
+  item.quantity--;
+  item.totalPrice = item.quantity * item.price;
+  localStorage.setItem("cart", JSON.stringify(cartItems));
 }
 
-function removeFromStorage(item) {
-  delete cartItems[item.id];
-  console.log(cartItems);
-  console.log(cartItemsArray);
+function increaseQuantity(item) {
+  item.quantity++;
+  item.totalPrice = item.quantity * item.price;
+  localStorage.setItem("cart", JSON.stringify(cartItems));
 }
+
+function removeFromCart(item) {
+  cartItemsArray.splice(cartItemsArray.indexOf(item), 1);
+  delete cartItems[item.id];
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+}
+
+function calculateTotalOrder() {
+  let totalPriceOrder = 0;
+  for (let i = 0; i < cartItemsArray.length; i++) {
+    totalPriceOrder = totalPriceOrder + cartItemsArray[i].totalPrice;
+  }
+  const totalElt = document.getElementById("totalId");
+  return (totalElt.textContent = totalPriceOrder);
+}
+
+// const formContainer = document.createElement("form");
+// formContainer.className = "form__container";
+// const surname = document.createElement("input");
+// surname.labels = "Surname";
+// const firstname = document.createElement("input");
+// const emailAddress = document.createElement("input");
+// const address = document.createElement("input");
+// const zipcode = document.createElement("input");
+// const city = document.createElement("input");
+
+// formContainer.append(surname, firstname, emailAddress, address, zipcode, city);
+// cartElement.appendChild(formContainer);
