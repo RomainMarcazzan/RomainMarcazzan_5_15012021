@@ -111,15 +111,47 @@ function calculateTotalOrder() {
   return (totalElt.textContent = totalPriceOrder);
 }
 
-// const formContainer = document.createElement("form");
-// formContainer.className = "form__container";
-// const surname = document.createElement("input");
-// surname.labels = "Surname";
-// const firstname = document.createElement("input");
-// const emailAddress = document.createElement("input");
-// const address = document.createElement("input");
-// const zipcode = document.createElement("input");
-// const city = document.createElement("input");
+document.getElementById("submitBtn").addEventListener("click", handleFormOrder);
 
-// formContainer.append(surname, firstname, emailAddress, address, zipcode, city);
-// cartElement.appendChild(formContainer);
+function handleFormOrder(e) {
+  e.preventDefault();
+
+  let order = {
+    contact: {
+      firstName: document.getElementById("firstName").value,
+      lastName: document.getElementById("lastName").value,
+      address: document.getElementById("address").value,
+      city: document.getElementById("city").value,
+      email: document.getElementById("email").value,
+    },
+    products: getProductsId(),
+  };
+  const request = new XMLHttpRequest();
+  request.open("POST", "http://localhost:3000/api/furniture/order");
+  request.setRequestHeader("Content-Type", "application/json");
+  request.send(JSON.stringify(order));
+  console.log(order);
+}
+
+function getProductsId() {
+  let productsId = [];
+
+  for (let i = 0; i < cartItemsArray.length; i++) {
+    productsId.push(cartItemsArray[i].id);
+  }
+  return productsId;
+}
+
+/**
+ *
+ * Expects request to contain:
+ * contact: {
+ *   firstName: string,
+ *   lastName: string,
+ *   address: string,
+ *   city: string,
+ *   email: string
+ * }
+ * products: [string] <-- array of product _id
+ *
+ */

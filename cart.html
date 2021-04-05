@@ -11,20 +11,19 @@
     <main class="container">
       <ul class="infoTable__container"><li>Product</li><li>Price</li><li>Quantity</li><li>Total</li><li>Remove</li></ul>
       <section id="cart"></section>
-      <form class="form__container">
-        <label>Lastname</label>
-        <input name="lastName" type="text" required>
-        <label>Firstname</label>
-        <input name="firstName" type="text" required>
-        <label>Email</label>
-        <input name="email" type="email" required>
-        <label>Address</label>
-        <input name="address" type="text" required>
-        <label>ZipCode</label>
-        <input name="zipcode" type="number" required>
-        <label>City</label>
-        <input name="city" type="text" required>
-        <button type="submit">Submit</button>
+      <div id="error"></div>
+      <form id="formOrder" class="form__container">
+        <label for="lastName">Lastname</label>
+        <input id="lastName" name="lastName" type="text" required>
+        <label for="firstName">Firstname</label>
+        <input id="firstName"  name="firstName" type="text" required>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+        <label for="address">Address</label>
+        <input id="address" name="address" type="text" required>
+        <label for="city">City</label>
+        <input id="city" name="city" type="text" required>
+        <button id="submitBtn" type="submit">Submit</button>
       </form>
   </main>
   <script src="./cart.js"></script>
