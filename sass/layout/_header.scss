@@ -1,0 +1,29 @@
+.headerNav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  margin: 1rem auto;
+  background-color: $primary-color;
+  border-radius: 1rem;
+
+  &__backArrow {
+    color: $primary-color;
+    font-size: 2rem;
+
+    &--visible {
+      color: black;
+      cursor: pointer;
+      font-size: 2rem;
+    }
+  }
+
+  &__img img {
+    height: 5rem;
+  }
+
+  &__link {
+    font-size: 2rem;
+    color: black;
+  }
+}

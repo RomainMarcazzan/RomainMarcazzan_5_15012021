@@ -36,38 +36,47 @@ function addProductToPage(product) {
   productDescription.className = "product__container__description";
   productDescription.textContent = product.description;
 
-  const productVarnishDropDown = document.createElement("div");
-  productVarnishDropDown.className = "product__container__dropDown";
+  const productButtonsContainer = document.createElement("div");
+  productButtonsContainer.className = "product__container__buttonsContainer";
 
-  const productVarnishDropDownButton = document.createElement("button");
-  productVarnishDropDownButton.className =
-    "product__container__dropDown__button";
-  productVarnishDropDownButton.textContent = "Varnish options";
+  const productVarnishDropDownContainer = document.createElement("div");
+  productVarnishDropDownContainer.className =
+    "product__container__buttonsContainer__dropDownContainer";
 
-  const productVarnishDropDownList = document.createElement("ul");
-  productVarnishDropDownList.className =
-    "product__container__dropDown__varnish";
+  const productVarnishDropDownContainerButton = document.createElement(
+    "button"
+  );
+  productVarnishDropDownContainerButton.textContent = "Varnish options";
 
-  const productOrder = document.createElement("button");
-  productOrder.className = "product__container__order";
-  productOrder.textContent = "Add to Cart";
+  const productVarnishDropDownContainerList = document.createElement("ul");
+
+  const productButtonOrder = document.createElement("button");
+  productButtonOrder.className = "product__container__buttonsContainer__order";
+  productButtonOrder.textContent = "Add to Cart";
 
   productElement.appendChild(productDiv);
-  productDiv.appendChild(productImg);
-  productDiv.appendChild(productTitle);
-  productDiv.appendChild(productPrice);
-  productDiv.appendChild(productDescription);
-  productDiv.appendChild(productVarnishDropDown);
-  productVarnishDropDown.appendChild(productVarnishDropDownButton);
-  productVarnishDropDown.appendChild(productVarnishDropDownList);
+  productDiv.append(
+    productImg,
+    productTitle,
+    productPrice,
+    productDescription,
+    productButtonsContainer
+  );
+  productButtonsContainer.append(
+    productVarnishDropDownContainer,
+    productButtonOrder
+  );
+
+  productVarnishDropDownContainer.append(
+    productVarnishDropDownContainerButton,
+    productVarnishDropDownContainerList
+  );
 
   for (let i = 0; i < product.varnish.length; i++) {
     const productVarnishOption = document.createElement("li");
     productVarnishOption.textContent = product.varnish[i];
-    productVarnishDropDownList.appendChild(productVarnishOption);
+    productVarnishDropDownContainerList.appendChild(productVarnishOption);
   }
-
-  productDiv.appendChild(productOrder);
 
   let productInCart = {
     id: product._id,
@@ -77,7 +86,7 @@ function addProductToPage(product) {
     totalPrice: 0,
   };
 
-  productOrder.addEventListener("click", (e) => {
+  productButtonOrder.addEventListener("click", (e) => {
     let cartItems = localStorage.getItem("cart");
     cartItems = JSON.parse(cartItems);
 

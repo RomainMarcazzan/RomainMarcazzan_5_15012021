@@ -5,7 +5,12 @@
   &__container {
     box-shadow: 0.5rem 0.5rem 0.5rem lightgray;
     border-radius: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    background-color: $primary-color;
+
+    &:hover {
+      transform: scale(1.05);
+    }
 
     &__image {
       height: 20rem;

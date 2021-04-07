@@ -1,4 +1,8 @@
 .container {
   width: 80%;
   margin: 1rem auto;
+
+  &__title {
+    margin-bottom: 0.5rem;
+  }
 }

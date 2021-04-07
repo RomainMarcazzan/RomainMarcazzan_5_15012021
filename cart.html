@@ -5,27 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./public/css/style.css"></link>
+    <script
+      src="https://kit.fontawesome.com/dc25e9d444.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Orinoco - Cart</title>
   </head>
   <body>
+    <header class="headerNav">
+      <a
+        href="./index.html"
+        title="back"
+        class="headerNav__backArrow headerNav__backArrow--visible"
+        ><i class="fas fa-arrow-left"></i
+      ></a>
+      <a class="headerNav__img" href="./index.html">
+        <img src="./public/img/orinoco_logo.png" />
+      </a>
+      <a class="headerNav__link" title="cart" href="./cart.html"
+        ><i class="fas fa-shopping-cart"></i
+      ></a>
+    </header>
     <main class="container">
-      <ul class="infoTable__container"><li>Product</li><li>Price</li><li>Quantity</li><li>Total</li><li>Remove</li></ul>
+      <ul class="infoTable__container">
+        <li>Product</li>
+        <li>Price</li>
+        <li>Quantity</li>
+        <li>Total</li>
+        <li>Remove</li>
+      </ul>
       <section id="cart"></section>
       <div id="error"></div>
       <form id="formOrder" class="form__container">
         <label for="lastName">Lastname</label>
-        <input id="lastName" name="lastName" type="text" required>
+        <input id="lastName" type="text"  />
+        <div class="hidden" id="errorLastname">Your lastname is required</div>
         <label for="firstName">Firstname</label>
-        <input id="firstName"  name="firstName" type="text" required>
+        <input id="firstName" type="text"  />
+        <div class="hidden" id="errorFirstName">Your first is required</div>
         <label for="email">Email</label>
-        <input id="email" name="email" type="email" required>
+        <input id="email" type="email"  />
+        <div class="hidden" id="errorEmail">Your email is required with correct email format</div>
         <label for="address">Address</label>
-        <input id="address" name="address" type="text" required>
+        <input id="address" type="text"  />
+        <div class="hidden" id="errorAddress">Your address is required</div>
         <label for="city">City</label>
-        <input id="city" name="city" type="text" required>
+        <input id="city" type="text"  />
+        <div class="hidden" id="errorCity">Your city is required</div>
         <button id="submitBtn" type="submit">Submit</button>
       </form>
-  </main>
-  <script src="./cart.js"></script>
+    </main>
+    <script src="./cart.js"></script>
   </body>
 </html>

@@ -2,9 +2,12 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   text-align: center;
-  align-items: center;
   list-style: none;
   border-bottom: 1px solid lightgray;
+  padding-bottom: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 3rem;
 }
 
 .cart {
@@ -16,11 +19,36 @@
       align-items: center;
       margin: 1rem auto;
       list-style: none;
+      font-size: 1.3rem;
 
-      & li:nth-child(3) {
+      &__quantity {
         display: flex;
         justify-content: space-around;
         align-items: center;
+
+        &__button {
+          cursor: pointer;
+          background-color: transparent;
+          border: none;
+        }
+      }
+
+      &__remove {
+        & button {
+          cursor: pointer;
+          background-color: transparent;
+          border: none;
+        }
+      }
+
+      &--totalRow {
+        border-top: 1px solid lightgray;
+        padding-top: 0.5rem;
+        font-weight: bold;
+      }
+
+      .total__container__list__total {
+        grid-column-start: 4;
       }
     }
   }
@@ -29,4 +57,43 @@
 .form__container {
   display: flex;
   flex-direction: column;
+  width: 50%;
+  margin: 5rem auto;
+
+  .hidden {
+    display: none;
+  }
+
+  & div {
+    color: red;
+    margin-top: 0.5rem;
+  }
+
+  & label {
+    margin: 1rem 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  & input {
+    border-radius: 1.5rem;
+    outline: none;
+    padding: 0.5rem;
+  }
+
+  & button {
+    margin: 2rem auto;
+    width: 100%;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    background-color: $primary-color;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
 }

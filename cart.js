@@ -13,7 +13,7 @@ cartItemsArray.map((item) => {
   nameLi.textContent = item.name;
   const priceLi = document.createElement("li");
   priceLi.className = "cart__container__list__price";
-  priceLi.textContent = item.price;
+  priceLi.textContent = `${item.price}€`;
 
   const quantityLi = document.createElement("li");
   quantityLi.className = "cart__container__list__quantity";
@@ -23,18 +23,18 @@ cartItemsArray.map((item) => {
 
   const decreaseBtn = document.createElement("button");
   decreaseBtn.className = "cart__container__list__quantity__button";
-  decreaseBtn.textContent = "-";
+  decreaseBtn.innerHTML = `<i class="fas fa-minus-circle"></i>`;
 
   const increaseBtn = document.createElement("button");
   increaseBtn.className = "cart__container__list__quantity__button";
-  increaseBtn.textContent = "+";
+  increaseBtn.innerHTML = `<i class="fas fa-plus-circle"></i>`;
   const totalLi = document.createElement("li");
   totalLi.className = "cart__container__list__total";
-  totalLi.textContent = item.totalPrice;
+  totalLi.textContent = `${item.totalPrice}€`;
   const removeLi = document.createElement("li");
   removeLi.className = "cart__container__list__remove";
   const removeBtn = document.createElement("button");
-  removeBtn.textContent = "x";
+  removeBtn.innerHTML = `<i class="fas fa-times-circle"></i>`;
   removeLi.appendChild(removeBtn);
 
   quantityLi.append(decreaseBtn, quantityChild, increaseBtn);
@@ -45,7 +45,7 @@ cartItemsArray.map((item) => {
     if (item.quantity > 0) {
       decreaseQuantity(item);
       quantityChild.textContent = item.quantity;
-      totalLi.textContent = item.totalPrice;
+      totalLi.textContent = `${item.totalPrice}€`;
     }
 
     if (item.quantity < 1) {
@@ -70,7 +70,7 @@ cartItemsArray.map((item) => {
 });
 
 const totalDiv = document.createElement("div");
-totalDiv.className = "cart__container__list";
+totalDiv.className = "cart__container__list cart__container__list--totalRow";
 
 const totalLabel = document.createElement("p");
 totalLabel.className = "total__container__list__totalLabel";
@@ -108,7 +108,7 @@ function calculateTotalOrder() {
     totalPriceOrder = totalPriceOrder + cartItemsArray[i].totalPrice;
   }
   const totalElt = document.getElementById("totalId");
-  return (totalElt.textContent = totalPriceOrder);
+  return (totalElt.textContent = `${totalPriceOrder}€`);
 }
 
 document.getElementById("submitBtn").addEventListener("click", handleFormOrder);
@@ -141,17 +141,3 @@ function getProductsId() {
   }
   return productsId;
 }
-
-/**
- *
- * Expects request to contain:
- * contact: {
- *   firstName: string,
- *   lastName: string,
- *   address: string,
- *   city: string,
- *   email: string
- * }
- * products: [string] <-- array of product _id
- *
- */
