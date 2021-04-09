@@ -7,7 +7,6 @@ request.onreadystatechange = function () {
   if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
     const product = JSON.parse(this.responseText);
     addProductToPage(product);
-    // console.log(product);
   } else console.log("error");
 };
 
@@ -30,7 +29,7 @@ function addProductToPage(product) {
 
   const productPrice = document.createElement("p");
   productPrice.className = "product__container__price";
-  productPrice.textContent = `${product.price}€`;
+  productPrice.textContent = `${product.price / 100}€`;
 
   const productDescription = document.createElement("p");
   productDescription.className = "product__container__description";
@@ -78,15 +77,17 @@ function addProductToPage(product) {
     productVarnishDropDownContainerList.appendChild(productVarnishOption);
   }
 
-  let productInCart = {
-    id: product._id,
-    name: product.name,
-    price: product.price,
-    quantity: 0,
-    totalPrice: 0,
-  };
+  productButtonOrder.addEventListener("click", addItemToCart);
 
-  productButtonOrder.addEventListener("click", (e) => {
+  function addItemToCart() {
+    let productInCart = {
+      id: product._id,
+      name: product.name,
+      price: product.price,
+      quantity: 0,
+      totalPrice: 0,
+    };
+
     let cartItems = localStorage.getItem("cart");
     cartItems = JSON.parse(cartItems);
 
@@ -110,5 +111,5 @@ function addProductToPage(product) {
     localStorage.setItem("cart", JSON.stringify(cartItems));
 
     window.location.replace("./cart.html");
-  });
+  }
 }

@@ -2,7 +2,6 @@ const request = new XMLHttpRequest();
 request.onreadystatechange = function () {
   if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
     const furnitures = JSON.parse(this.responseText);
-    // console.log(furnitures);
     addFurnituresToPage(furnitures);
   } else console.log("error");
 };
@@ -13,7 +12,6 @@ request.send();
 const furnituresElement = document.querySelector("#furnitures");
 
 function addFurnituresToPage(furnitures) {
-  console.log("succes");
   furnitures.forEach((furniture) => {
     const furnitureDiv = document.createElement("div");
     furnitureDiv.className = "furnitures__container";
@@ -34,7 +32,7 @@ function addFurnituresToPage(furnitures) {
 
     const furniturePrice = document.createElement("p");
     furniturePrice.className = "furnitures__container__info__price";
-    furniturePrice.textContent = `${furniture.price}€`;
+    furniturePrice.textContent = `${furniture.price / 100}€`;
 
     furnituresElement.appendChild(furnitureDiv);
     furnitureDiv.appendChild(furnitureLink);

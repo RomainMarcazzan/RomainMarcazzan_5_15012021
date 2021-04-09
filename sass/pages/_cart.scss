@@ -10,8 +10,8 @@
   margin-top: 3rem;
 }
 
-.cart {
-  &__container {
+#cart {
+  .cart__container {
     &__list {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -60,10 +60,6 @@
   width: 50%;
   margin: 5rem auto;
 
-  .hidden {
-    display: none;
-  }
-
   & div {
     color: red;
     margin-top: 0.5rem;
@@ -96,4 +92,15 @@
       background-color: $secondary-color;
     }
   }
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 50vh auto;
 }

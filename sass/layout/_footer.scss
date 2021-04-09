@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem;
+  background-color: $primary-color;
+
+  & a {
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    color: black;
+
+    &:active {
+      color: black;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint) {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
