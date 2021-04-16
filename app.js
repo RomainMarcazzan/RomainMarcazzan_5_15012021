@@ -3,15 +3,14 @@ request.onreadystatechange = function () {
   if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
     const furnitures = JSON.parse(this.responseText);
     addFurnituresToPage(furnitures);
-  } else console.log("error");
+  } else console.log(this.status);
 };
 
-request.open("GET", "http://localhost:3000/api/furniture", true);
+request.open("GET", "http://localhost:3000/api/furniture");
 request.send();
 
-const furnituresElement = document.querySelector("#furnitures");
-
 function addFurnituresToPage(furnitures) {
+  const furnituresElement = document.querySelector("#furnitures");
   furnitures.forEach((furniture) => {
     const furnitureDiv = document.createElement("div");
     furnitureDiv.className = "furnitures__container";

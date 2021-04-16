@@ -168,8 +168,12 @@ function handleFormOrder(e) {
     request.open("POST", "http://localhost:3000/api/furniture/order");
     request.setRequestHeader("Content-Type", "application/json");
     request.send(JSON.stringify(order));
-
-    afterOrderSent();
+    request.onreadystatechange = function () {
+      if (this.readyState == XMLHttpRequest.DONE && this.status == 201) {
+        const idOrder = JSON.parse(this.responseText);
+        afterOrderSent(idOrder.orderId);
+      } else console.log("error");
+    };
   }
 }
 
@@ -181,9 +185,10 @@ function getProductsId() {
   return productsId;
 }
 
-function afterOrderSent() {
+function afterOrderSent(idOrder) {
   localStorage.clear("cart");
   document.querySelector("main").classList.add("hidden");
   const orderOk = document.querySelector("#orderOk");
   orderOk.classList.replace("hidden", "visible");
+  document.querySelector("#orderIdElt").textContent = idOrder;
 }
