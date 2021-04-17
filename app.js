@@ -1,13 +1,15 @@
-const request = new XMLHttpRequest();
-request.onreadystatechange = function () {
-  if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-    const furnitures = JSON.parse(this.responseText);
-    addFurnituresToPage(furnitures);
-  } else console.log(this.status);
-};
+// const request = new XMLHttpRequest();
+// request.onreadystatechange = function () {
+//   if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+//     const furnitures = JSON.parse(this.responseText);
+//     addFurnituresToPage(furnitures);
+//   } else console.log(this.status);
+// };
 
-request.open("GET", "http://localhost:3000/api/furniture");
-request.send();
+// request.open("GET", "http://localhost:3000/api/furniture");
+// request.send();
+
+ajaxGet("http://localhost:3000/api/furniture", addFurnituresToPage);
 
 function addFurnituresToPage(furnitures) {
   const furnituresElement = document.querySelector("#furnitures");

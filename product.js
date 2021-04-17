@@ -2,16 +2,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get("id");
 
-const request = new XMLHttpRequest();
-request.onreadystatechange = function () {
-  if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-    const product = JSON.parse(this.responseText);
-    addProductToPage(product);
-  } else console.log("error");
-};
-
-request.open("GET", `http://localhost:3000/api/furniture/${id}`, true);
-request.send();
+ajaxGet(`http://localhost:3000/api/furniture/${id}`, addProductToPage);
 
 const productElement = document.querySelector("#product");
 
